@@ -3,4 +3,7 @@ class User < ApplicationRecord
     has_many :reviewed_guitars, through: :reviews, source: :guitar
 
     has_many :guitars
+
+    has_secure_password
+    
 end
