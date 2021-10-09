@@ -5,7 +5,12 @@ class Guitar < ApplicationRecord
   has_many :users, through: :reviews
 
   def make_attributes=(attributes)
-    make = Make.find_or_create_by(attributes) if !name.empty?
+    self.make = Make.find_or_create_by(attributes) if !attributes['name'].empty?
+    self.make
   end 
-  
+
+  def make_name
+    make.try(:name)
+  end
+
 end
