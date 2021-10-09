@@ -1,0 +1,9 @@
+<h1>All the Guitars</h1>
+
+<% @guitars.each do |g| %>
+
+  <h2><%= link_to g.model, guitar_path(g.id)%> - <%= g.make.name %> </h2>
+  <div>
+    <p><%= g.description %></p>
+  </div>
+  <% end %>

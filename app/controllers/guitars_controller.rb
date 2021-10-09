@@ -15,6 +15,10 @@ class GuitarsController < ApplicationController
         end
     end 
 
+    def index
+        @guitars = Guitar.all
+    end
+
     private
 
     def guitar_params
