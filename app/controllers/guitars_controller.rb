@@ -1,5 +1,8 @@
 class GuitarsController < ApplicationController
+    before_action :set_guitar, only:[:show]
+    before_action :redirect_if_not_logged_in
 
+    
     def new
         @guitar = Guitar.new
         @guitar.build_make
@@ -16,13 +19,7 @@ class GuitarsController < ApplicationController
         end
     end 
 
-    def index
-        @guitars = Guitar.all
-    end
-
     def show
-        @guitar = Guitar.find_by(params[:id])
-     redirect_to guitars_path if !@guitar
     end 
 
     private
@@ -30,5 +27,10 @@ class GuitarsController < ApplicationController
     def guitar_params
         params.require(:guitar).permit(:model, :description, :make_id, make_attributes: [:name])
     end 
+
+    def set_guitar
+        @guitar = Guitar.find_by_id(params[:id])
+        redirect_to guitars_path if !@guitar
+     end
 
 end 
