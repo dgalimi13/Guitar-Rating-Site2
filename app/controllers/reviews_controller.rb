@@ -8,6 +8,19 @@ class ReviewsController < ApplicationController
         end 
     end 
 
+    def create
+        @review = Review.new(review_params)
+        if @review.save
+        redirect_to review_path(@review)
+        else 
+            render :new
+        end 
+    end 
+
+    def show 
+
+    end
+
     def index
     end 
 
