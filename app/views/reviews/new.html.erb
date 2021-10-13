@@ -5,6 +5,14 @@
     <% end %>
 
     <%= form_for(@review) do |f|%>
+        <% if params[:guitar_id] %>
+        <%= f.hidden_field :guitar_id %>
+        <% else %>
+        <div>
+        <%= f.label :guitar_id, "Select a Guitar" %>
+        <%= f.collection_select :guitar_id, Guitar.all, :id, :model, include_blank: true %>
+        </div>
+        <% end %>
     <div>
     <%= f.label :stars %>
     <%= f.number_field :stars, min:0, max:5 %>
@@ -21,7 +29,7 @@
     <%= f.text_area :content, size: "25x10" %>
     </div>
     <br>
-    <%= f.hidden_field :guitar_id %>
+    
 
     <%= f.submit %>
 <% end %>
