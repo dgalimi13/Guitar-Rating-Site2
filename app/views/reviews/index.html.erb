@@ -1,10 +1,15 @@
+<% if @guitar %>
+    <h1>Reviews for <%= @guitar.model%> - <%= @guitar.make_name%>
+<% else %>
 <h1>All the Reviews </h1>
+<% end %>
 
 <ul>
 <% @reviews.each do |review| %>
 
   <li>
-    <%= review.title%>: <%= review.stars%>
+    <%= review.guitar.model%>: <%= review.title%> - <%= review.stars%>
+    <br>
   </li> <br>
 
 <% end %>
