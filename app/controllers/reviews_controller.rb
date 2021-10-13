@@ -11,4 +11,10 @@ class ReviewsController < ApplicationController
     def index
     end 
 
+    private 
+
+    def review_params
+        params.require(:review).permit(:guitar_id, :content, :stars, :title)
+    end 
+
 end
