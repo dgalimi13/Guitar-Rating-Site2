@@ -20,6 +20,11 @@ class GuitarsController < ApplicationController
         @guitars = Guitar.all
     end
 
+    def show
+        @guitar = Guitar.find_by(params[:id])
+     redirect_to guitars_path if !@guitar
+    end 
+
     private
 
     def guitar_params
