@@ -5,11 +5,18 @@ class Guitar < ApplicationRecord
   has_many :users, through: :reviews
 
   validates :model, presence: true
+  validate :not_a_duplicate
 
   def make_attributes=(attributes)
     self.make = Make.find_or_create_by(attributes) if !attributes['name'].empty?
     self.make
   end 
+
+  def not_a_duplicate
+    if Guitar.find_by(model: model, make_id: make_id)
+      errors.add(:model, "has already been added for that make")
+    end 
+  end
 
   def make_name
     make.try(:name)
