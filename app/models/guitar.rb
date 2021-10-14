@@ -18,6 +18,10 @@ class Guitar < ApplicationRecord
     end 
   end
 
+  def model_and_make
+    "#{model} - #{make.name}"
+  end 
+
   def make_name
     make.try(:name)
   end

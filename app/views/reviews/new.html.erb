@@ -12,7 +12,7 @@
         <% else %>
         <div>
         <%= f.label :guitar_id, "Select a Guitar" %>
-        <%= f.collection_select :guitar_id, Guitar.all, :id, :model, include_blank: true %>
+        <%= f.collection_select :guitar_id, Guitar.all, :id, :model_and_make, include_blank: true %>
         </div>
         <% end %>
     <div>
