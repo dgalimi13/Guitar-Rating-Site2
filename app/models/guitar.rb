@@ -4,6 +4,8 @@ class Guitar < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
+  validates :model, presence: true
+
   def make_attributes=(attributes)
     self.make = Make.find_or_create_by(attributes) if !attributes['name'].empty?
     self.make
