@@ -2,7 +2,10 @@ class GuitarsController < ApplicationController
     before_action :set_guitar, only:[:show]
     before_action :redirect_if_not_logged_in
 
-    
+    def index
+        @guitars = Guitar.all
+    end 
+
     def new
         @guitar = Guitar.new
         @guitar.build_make
