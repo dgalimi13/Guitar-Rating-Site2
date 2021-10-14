@@ -4,6 +4,8 @@
     <h1>Create a review </h1>
     <% end %>
 
+    <%= render partial: 'layouts/errors', locals: {object: @review} %>
+
     <%= form_for(@review) do |f|%>
         <% if params[:guitar_id] %>
         <%= f.hidden_field :guitar_id %>
