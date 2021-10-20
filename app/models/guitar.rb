@@ -7,6 +7,10 @@ class Guitar < ApplicationRecord
   validates :model, presence: true
   validate :not_a_duplicate
 
+  def self.alpha
+    order(:model)
+  end
+
   def make_attributes=(attributes)
     self.make = Make.find_or_create_by(attributes) if !attributes['name'].empty?
     self.make
