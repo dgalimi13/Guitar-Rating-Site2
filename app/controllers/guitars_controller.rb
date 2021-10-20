@@ -3,7 +3,7 @@ class GuitarsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        @guitars = Guitar.all
+        @guitars = Guitar.order_by_rating.includes(:make)
     end 
 
     def new
