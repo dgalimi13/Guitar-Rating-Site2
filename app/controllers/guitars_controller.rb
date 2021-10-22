@@ -1,5 +1,5 @@
 class GuitarsController < ApplicationController
-    before_action :set_guitar, only:[:show]
+    before_action :set_guitar, only:[:show, :edit, :update]
     before_action :redirect_if_not_logged_in
 
     def index
@@ -24,6 +24,17 @@ class GuitarsController < ApplicationController
 
     def show
     end 
+
+    def edit
+    end 
+
+    def update
+        if @guitar.update(guitar_params)
+            redirect_to guitar_path(@guitar)
+          else
+            render :edit
+          end
+    end
 
     private
 
