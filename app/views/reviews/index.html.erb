@@ -8,7 +8,7 @@
 <% @reviews.each do |review| %>
 
   <li>
-    <%= review.guitar.model%>: <%= review.title%> - <%= review.stars%>
+  <%= review.guitar.make.name%> - <%= review.guitar.model%>: <%= review.title%> - <%= review.stars%>
     <br>
   </li> <br>
 
